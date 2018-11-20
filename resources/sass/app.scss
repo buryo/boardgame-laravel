@@ -1,0 +1,14 @@
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//font-awesome
+@import '~font-awesome/scss/font-awesome';
+
+.pagination{
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+}
