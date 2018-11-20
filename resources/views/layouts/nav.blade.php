@@ -14,13 +14,7 @@
                 @if (\Illuminate\Support\Facades\Auth::user()['role'] == 'admin')
                     <div class="dropdown">
                         <a class="nav_link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false" href="" style="
-                color: #fff;
-                font-size: 12px;
-                font-weight: 800;
-                letter-spacing: 1px;
-                text-transform: uppercase;
-                padding: 10px 20px;">{{__('navbar.games')}}</a>
+                           aria-expanded="false" href="">{{__('navbar.games')}}</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li class="nav-item">
                                 <a class="dropdown-item" href="{{ route('games.index') }}">
@@ -61,13 +55,7 @@
 
                 <div class="dropdown">
                     <a class="nav_link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false" href="" style="
-                color: #fff;
-                font-size: 12px;
-                font-weight: 800;
-                letter-spacing: 1px;
-                text-transform: uppercase;
-                padding: 10px 20px;">{{__('Language')}}</a>
+                       aria-expanded="false" href="">{{__('Language')}}</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li class="nav-item">
                             <a class="dropdown-item" href="{{ route('battles.index') }}" onclick="event.preventDefault(); document.getElementById('change-language-english').submit();">

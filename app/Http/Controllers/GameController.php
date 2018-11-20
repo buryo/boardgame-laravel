@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class GameController extends Controller
 {
@@ -47,7 +48,17 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
+        Game::create(request()->validate([
+            'name' => 'required|min:3|unique:games',
+            'description' => 'nullable',
+            'minPlayers' => 'required|lte:maxPlayers|numeric',
+            'maxPlayers' => 'required|gte:minPlayers|numeric'
+        ]));
 
+        Session::flash('message', 'Game created successfully!');
+        Session::flash('alert-class', 'alert-success');
+
+        return back();
     }
 
     /**
