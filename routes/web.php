@@ -23,9 +23,3 @@ Route::resource('scores', 'ScoreController');
 
 Route::post('/language-chooser', 'LanguageController@changeLanguage')->name('languageChange');
 
-//Route::post('/language/', array(
-//    'before' => 'csrf',
-//    'as' => 'language-chooser',
-//    'uses' => 'LanguageController@changeLanguage',
-//));
-

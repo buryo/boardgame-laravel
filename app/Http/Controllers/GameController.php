@@ -27,7 +27,8 @@ class GameController extends Controller
      */
     public function index()
     {
-        return view('back.games.index');
+        $games = Game::paginate(10);
+        return view('back.games.index', compact('games'));
     }
 
     /**
@@ -69,7 +70,9 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
-        //
+        $game = Game::find($game['id']);
+
+        return view('back.games.edit', compact('game'));
     }
 
     /**
@@ -81,7 +84,17 @@ class GameController extends Controller
      */
     public function update(Request $request, Game $game)
     {
-        //
+        Game::where('id', $game['id'])->update([
+            'name' => $request['name'],
+            'minPlayers' => $request['minPlayers'],
+            'maxPlayers' => $request['maxPlayers'],
+            'description' => $request['description']
+        ]);
+
+        Session::flash('message', 'Game updated successfully!');
+        Session::flash('alert-class', 'alert-success');
+
+        return back();
     }
 
     /**

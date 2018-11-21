@@ -23,7 +23,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="dropdown-item" href="{{ ('/games/create') }}">
+                                <a class="dropdown-item" href="{{ route('games.create') }}">
                                     {{__('navbar.createGame')}}
                                 </a>
                             </li>
