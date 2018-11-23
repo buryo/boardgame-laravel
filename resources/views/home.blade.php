@@ -32,7 +32,7 @@
             <tr>
                 <th>{{ ucfirst($player['id']) }}</th>
                 <td>{{ ucfirst($player['nickname']) }}</td>
-                <td>{{ ucfirst($player['email']) }}</td>
+                <td>{{ $player['email'] }}</td>
                 <td></td>
             </tr>
         @endforeach
