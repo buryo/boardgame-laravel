@@ -13527,3 +13527,7 @@ a.text-dark:focus {
   justify-content: center !important;
 }
 
+.pointer {
+  cursor: pointer;
+}
+

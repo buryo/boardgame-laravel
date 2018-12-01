@@ -14,4 +14,9 @@ class Game extends Model
     protected $fillable = [
         'name', 'minPlayers', 'maxPlayers', 'description',
     ];
+
+    public function battle()
+    {
+        return $this->hasMany(Battle::class);
+    }
 }
