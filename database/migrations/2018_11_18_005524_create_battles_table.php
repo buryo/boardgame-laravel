@@ -18,7 +18,6 @@ class CreateBattlesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('game_id');
             $table->timestamps();
-
             $table->foreign('game_id')->references('id')->on('games');
         });
     }

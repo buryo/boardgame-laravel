@@ -14,7 +14,8 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        return view('back.players.index');
+        $players = player::paginate(15);
+        return view('back.players.index', compact('players'));
     }
 
     /**
