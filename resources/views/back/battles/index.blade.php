@@ -15,8 +15,8 @@
 
         @foreach($games as $game)
             <tr>
-                <th>{{ $game['id'] }}</th>
-                <th>{{ $game['name'] }}</th>
+                <td>{{ $game['id'] }}</td>
+                <td>{{ $game['name'] }}</td>
                 <td>{{ $game['minPlayers'] }} — {{ $game['maxPlayers'] }}</td>
                 <td>{{ $game['description'] }}</td>
                 <td class="input-group">

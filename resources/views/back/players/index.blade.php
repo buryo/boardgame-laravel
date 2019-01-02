@@ -7,16 +7,14 @@
     <table class="table table-hover table-responsive-sm">
         <tr>
             <th>Nickname</th>
-            <th>Points</th>
-            <th>Game status</th>
+            <th>Tournament Points</th>
             <th>Member since</th>
         </tr>
 
         @foreach($players as $player)
             <tr>
-                <th>{{ $player['nickname'] }}</th>
-                <th>{{ $player['points'] }}</th>
-                <th>{{ $player['game_status'] }}</th>
+                <td>{{ $player['nickname'] }}</td>
+                <td>{{ $player['points'] }}</td>
                 <td>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($player['created_at']))->format('d-m-Y') }}</td>
             </tr>
         @endforeach

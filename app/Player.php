@@ -12,6 +12,20 @@ class Player extends Model
      * @var array
      */
     protected $fillable = [
-        'nickname', 'email'
+        'nickname', 'email', 'registered_ip'
     ];
+
+    protected $hidden = [
+        'registered_ip',
+    ];
+
+    public function battle()
+    {
+        return $this->belongsToMany(Battle::class, 'battle_player');
+    }
+
+    public function score()
+    {
+        return $this->hasMany(Score::class);
+    }
 }

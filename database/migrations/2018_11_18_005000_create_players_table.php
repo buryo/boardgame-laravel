@@ -14,12 +14,14 @@ class CreatePlayersTable extends Migration
     public function up()
     {
         Schema::create('players', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('nickname')->unique();
             $table->string('email')->unique();
             $table->integer('points')->default(0);
             $table->unsignedInteger('game_status')->default(0);
             $table->unsignedInteger('registered_status')->default(0);
+            $table->string('registered_ip');
             $table->timestamps();
         });
     }

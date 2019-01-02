@@ -36,10 +36,16 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        player::create(request()->validate([
-            'nickname' => 'required|min:3|unique:players',
-            'email' => 'required|email|unique:players'
-        ]));
+        $this->validate(request(),[
+                'nickname' => 'required|min:3|unique:players',
+                'email' => 'required|email|unique:players',
+        ]);
+
+        player::create([
+            'registered_ip' => \Request::ip(),
+            'nickname' => $request['nickname'],
+            'email' => $request['email'],
+            ]);
 
         return back();
     }

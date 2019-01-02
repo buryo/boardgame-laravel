@@ -53,8 +53,9 @@ class BattleController extends Controller
      */
     public function store(Request $request)
     {
-        Battle::create(request()->validate([
-            'game_id' => 'required|numeric|exists:games,id'
+        $battle = Battle::create(
+            request()->validate([
+            'game_id' => 'required|numeric|exists:games,id',
         ]));
 
         $players = $request->input('players');
@@ -66,11 +67,41 @@ class BattleController extends Controller
          */
         for ($i = 1; $i < count($players) + 1; $i++) {
             if ($players['player'.$i] != null){
-                DB::table('battle_players')->insert([
+                DB::table('battle_player')->insert([
                     [
-                        'battle_id' => $request->input('game_id'),
+                        'battle_id' => $battle->id,
                         'player_id' => $players['player'.$i],
-                        'player_points' => $ppoints['player' . $i . 'points']
+                    ]
+                ]);
+
+                switch ($i) {
+                    case "1":
+                        $tournamentPoints = 7;
+                        break;
+                    case "2":
+                        $tournamentPoints = 5;
+                        break;
+                    case "3":
+                        $tournamentPoints = 3;
+                        break;
+                    case "4":
+                        $tournamentPoints = 1;
+                        break;
+                    default:
+                        $tournamentPoints = 0;
+                }
+
+//              Changing players tournament points
+                DB::table('players')
+                    ->where('id',  $players['player'.$i])
+                    ->increment('points', $tournamentPoints);
+
+//              Insert the scores of players
+                DB::table('scores')->insert([
+                    [
+                        'battle_id' => $battle->id,
+                        'player_id' => $players['player'.$i],
+                        'score' => $ppoints['player'.$i.'points'],
                     ]
                 ]);
             }
@@ -86,40 +117,9 @@ class BattleController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $battle = Battle::with('game')->with('score')->orderBy('id', 'DESC')->find($id);
+        $players = Player::all();
+//        dd($battle);
+        return view('back.battles.show', compact('battle', 'players'));
     }
 }

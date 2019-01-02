@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Battle;
+use App\Player;
 use App\Score;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class ScoreController extends Controller
      */
     public function index()
     {
-        return view('back.scores.index');
+        $battles = Battle::with('game')->with('score')->orderBy('id', 'DESC')->get();
+        return view('back.scores.index', compact('battles', 'players'));
     }
 
     /**

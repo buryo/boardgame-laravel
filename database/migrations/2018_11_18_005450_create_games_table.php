@@ -14,6 +14,7 @@ class CreateGamesTable extends Migration
     public function up()
     {
         Schema::create('games', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->string('name')->unique();
             $table->string('description')->nullable();

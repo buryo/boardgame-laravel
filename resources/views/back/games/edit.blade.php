@@ -37,8 +37,8 @@
             <div class="col-6">
                 <div class="form-group">
                     <label for="gameName">Game description</label>
-                    <textarea name="description" class="form-control" placeholder="Your Message *" value="{{ $game['description'] }}"
-                              style="width: 100%; height: 127px;"></textarea>
+                    <textarea name="description" class="form-control" placeholder="Your Message *"
+                              style="width: 100%; height: 127px;">{{ $game['description'] }}</textarea>
                 </div>
             </div>
             @include('layouts.error')

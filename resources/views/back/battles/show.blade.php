@@ -12,42 +12,40 @@
                         @csrf
                         <div class="form-group">
                             <label for="gameName">Game</label>
-                            <input type="hidden" name="game_id" value="{{$game['id']}}">
+                            <input type="hidden" name="game_id" value="{{$battle->game['id']}}">
                             <input type='text' class="form-control" id="game" name="type"
-                                   value='{{$game['name']}}' disabled>
+                                   value='{{$battle->game['name']}}' disabled>
                         </div>
 
                         <!-- Players -->
                         <div class="row form-group">
-                            @for ($i = 1; $i < $game['maxPlayers'] + 1; $i++)
+                            <?php $i=1 ?>
+                            @foreach( $battle->score as $scorePlayer)
                                 <div class="col">
-                                    <label for="speler{{$i}}">{{$i}}. Winner</label>
-                                    <select class="form-control" name="players[player{{$i}}]">
+                                    <label for="speler">{{$i}}. Winner</label>
+                                    <select class="form-control" disabled name="">
                                         <option value=""></option>
                                         @foreach($players as $player)
-                                            <option value="{{$player['id']}}">{{$player['nickname']}}</option>
+                                            @if($player['id'] == $scorePlayer['player_id'])
+                                                <option selected>{{$player['nickname']}}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
-                            @endfor
+                                <?php  $i++ ?>
+                            @endforeach
                         </div>
                         <!-- end players-->
-                        
+
                         <!--        Scores      -->
                         <div class="row form-group">
-                            @for ($i = 1; $i < $game['maxPlayers'] + 1; $i++)
+                            @foreach( $battle->score as $player)
                                 <div class="col">
                                     <label for="punten">Points</label>
-                                    <input type="text" class="form-control" name="ppoints[player{{$i}}points]">
+                                    <input disabled type="text" class="form-control" value="{{$player['score']}}">
                                 </div>
-                            @endfor
+                            @endforeach
                         <!-- end scores-->
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col ">
-                                <button type="submit" class="btn btn-success float-right">Save Battle!</button>
-                            </div>
                         </div>
                     </form>
                 </div>
