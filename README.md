@@ -1,6 +1,9 @@
 # boardgame-Laravel
 ### individueel opdracht vanuit Windesheim Flevoland
 
+### Zie de PSD die gemaakt is voor deze opdracht
+[PSD](https://github.com/buryo/boardgame-laravel/blob/master/board_game_psd.jpeg)
+
 ## De opdracht beschrijving vanuit Windesheim Flevoland
 Bij de boardgame app kan je gebruikers aanmaken/registreren. Aan die registratie hangt een player vast.
 Deze player(nickname) is voor het bijhouden van de scores.
