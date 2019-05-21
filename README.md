@@ -13,4 +13,4 @@ Als rapportage moet je denken aan hoe vaak is een spel gespeeld.
 Wie heeft het vaakst een spel gewonnen, hoe vaak heeft iemand een spel gewonnen. Etc..
 
 ## Gebruikte technieken
-Laravel, SASS, Bootstrap, MySQL, 
+Laravel, SASS, Bootstrap en MySQL, 
